@@ -15,7 +15,7 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->open('http://www.achievers.com/');
         $this->assertElementContainsText('class=navbar-menu', 'Resources');
         $this->click('//*[@id="navbar-collapse-1"]/ul/li[4]/a');
-        $this->waitForPageToLoad(5000);
+        $this->pause(5000);
 
         //get title of current page
         $title = $this->getTitle();
@@ -333,6 +333,18 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
     }
 
 /////////////////////////////////////////Testing Special Characters As Input Keyword////////////////////////////////////////////////////////////
+    //test precise search
+    public function testPreciseSearch()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','""');
+        $this->keyPress('id=resource_search_keyword','\13');
+        $this->waitForPageToLoad(5000);
+        //check if there are search results
+        $this->assertElementPresent('class=view-empty');
+        $this->close();
+    }
+
     //Test special character &
     public function testSpecialCharacterSearch0()
     {
@@ -348,7 +360,7 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->assertElementNotPresent('class=element-invisible');
 
         //however url link changes to searched keyword
-        $this->assertLocation('*body=&*title=&');
+        $this->assertLocation("*body=&*title=&");
         $this->close();
     }
 
@@ -852,6 +864,275 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->assertElementNotPresent('class=element-invisible');
         $this->close();
     }    
+////////////////////////////////////////////The following are simple french characers////////////////////////////////////////////////////
+
+    //Test french character è
+    public function testFrenchCharacter0()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','è');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*è*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=è*title=è");
+        $this->close();
+    }    
+
+    //Test french character ë
+    public function testFrenchCharacter1()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ë');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ë*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ë*title=ë");
+        $this->close();
+    }    
+    
+    //Test french character é
+    public function testFrenchCharacter2()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','é');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*é*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=é*title=é");
+        $this->close();
+    }   
+
+    //Test french character ê
+    public function testFrenchCharacter3()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ê');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ê*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ê*title=ê");
+        $this->close();
+    }  
+
+    //Test french character ù
+    public function testFrenchCharacter4()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ù');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ù*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ù*title=ù");
+        $this->close();
+    } 
+
+    //Test french character û
+    public function testFrenchCharacter5()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','û');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*û*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=û*title=û");
+        $this->close();
+    } 
+
+    //Test french character ü
+    public function testFrenchCharacter6()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ü');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ü*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ü*title=ü");
+        $this->close();
+    }
+
+    //Test french character à
+    public function testFrenchCharacter7()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','à');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*à*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=à*title=à");
+        $this->close();
+    } 
+
+    //Test french character â
+    public function testFrenchCharacter8()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','â');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*â*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=â*title=â");
+        $this->close();
+    }
+
+    //Test french character ç
+    public function testFrenchCharacter9()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ç');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ç*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ç*title=ç");
+        $this->close();
+    }
+
+    //Test french character ï
+    public function testFrenchCharacter10()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ï');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ï*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ï*title=ï");
+        $this->close();
+    }
+
+    //Test french character î
+    public function testFrenchCharacter11()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','î');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*î*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=î*title=î");
+        $this->close();
+    }
+
+    //Test french character ô
+    public function testFrenchCharacter12()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ô');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ô*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ô*title=ô");
+        $this->close();
+    }
+
+    //Test french character ÿ
+    public function testFrenchCharacter13()
+    {
+        $this->open('http://www.achievers.com/resource/');
+        $this->type('id=resource_search_keyword','ÿ');
+        $this->click('id=resource_search_submit');
+        $this->waitForPageToLoad(7000);
+
+        //did not search for the keyword
+        $this->assertElementNotContainsText('id=resource_search_criteria','*ÿ*');
+
+        //assert that no error msg was shown;
+        $this->assertElementNotPresent('class=element-invisible');
+
+        //however url link changes to searched keyword
+        //$this->assertLocation("*body=ÿ*title=ÿ");
+        $this->close();
+    }
+
+//////////////////////////////////////////////End of French Character Tests////////////////////////////////////////////////////////////
 
     //test result link by clicking image
     public function testResultImageLink()
@@ -917,7 +1198,7 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->assertNotContains('missing', $img);
         $this->close();
     }
-
+///////////////////////////////////////////////End of Tests/////////////////////////////////////////////////////////////////////////
 
 
             
@@ -971,11 +1252,14 @@ class ResourcePageTest extends PHPUnit_Extensions_SeleniumTestCase
     // }
 
     //test if drop down can accomondate a very long tag
+        // this test is to check if the drop down menu adjust it's size
 
     //test event trigger when changing from one drop down option to the next
 
     //test result view count
+        //probably cross check with database
 
     //test date of publish of result
+        //probably need to cross check it in database?
 }   
 ?>

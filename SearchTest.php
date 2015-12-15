@@ -141,6 +141,19 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->close();
     }
 
+    //test precise search with double quote
+    public function testPreciseSearch()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', '""');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(5000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+
     //test a series of searches part 1
     public function testSeriesSearch1()
     {
@@ -176,6 +189,8 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->assertElementNotPresent('id=search_totals');
         $this->close();
     }
+
+///////////////////////////////////////////////////////Test Special Characters/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //test to only search for special character '&'
     public function testSpecialCharacterSearch0()
@@ -547,5 +562,179 @@ class SearchTest extends PHPUnit_Extensions_SeleniumTestCase
         $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
         $this->close();
     }
+
+////////////////////////////////////////////////Special characters End////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////Test French Characters//////////////////////////////////////////////////////////////////////////////
+
+    //test to only search for french character 'ë'
+    public function testFrenchCharacter0()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ë');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ê'
+    public function testFrenchCharacter1()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ê');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'è'
+    public function testFrenchCharacter2()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'è');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'é'
+    public function testFrenchCharacter3()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'é');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ô'
+    public function testFrenchCharacter4()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ô');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'î'
+    public function testFrenchCharacter5()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'î');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ï'
+    public function testFrenchCharacter6()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ï');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ç'
+    public function testFrenchCharacter7()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ç');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'â'
+    public function testFrenchCharacter8()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'â');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'à'
+    public function testFrenchCharacter9()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'à');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ÿ'
+    public function testFrenchCharacter10()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ÿ');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ü'
+    public function testFrenchCharacter11()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ü');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'û'
+    public function testFrenchCharacter12()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'û');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+    //test to only search for french character 'ù'
+    public function testFrenchCharacter13()
+    {
+        $this->open('http://www.achievers.com/');
+        $this->click('id=option-search');
+        $this->type('id=search_keyword', 'ù');
+        $this->keyPress('id=search_keyword','\13');
+        $this->pause(3000);
+        $this->assertElementContainsText( 'id=search-results-wrapper', "We couldn't find any results for your search.");
+        $this->close();
+    }
+
+/////////////////////////////////////////////////End of Test//////////////////////////////////////////////////////////////////////////////////////////
 }
 ?>
